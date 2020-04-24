@@ -21,11 +21,6 @@ def make_mask(correct_guesses,word):
             mask += '_.'
     return mask
 
-def decrease_lives(lives):
-    lives -= 1
-    print(f"You lost your life, you have {lives} lives, try it again")
-    if lives == 0:
-        print(f"You lost all your lives, the word was {word}.")
 
 while lives > 0:
     current_guess = input("Please input your letter: ")
@@ -34,7 +29,10 @@ while lives > 0:
         mask = make_mask(correct_guesses,word)
         print(mask)
     else: 
-        decrease_lives(lives)
+        lives -=1
+        print(f"You lost your life, you have {lives} lives, try it again")
+        if lives == 0:
+                print(f"You lost all your lives, the word was {word}.")
 
     if len(letters) == len(set(correct_guesses)):
         break
